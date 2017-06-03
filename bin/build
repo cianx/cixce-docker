@@ -1,0 +1,12 @@
+#!/bin/bash
+set -x
+
+docker build --pull  \
+    -t cixce:trusty-apache-php \
+    -f docker-files/trusty-apache-php \
+    docker-files
+docker build --pull \
+    -f docker-files/trusty-node-6 \
+    -t cixce:trusty-node-6 \
+    docker-files
+
