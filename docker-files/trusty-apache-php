@@ -1,0 +1,33 @@
+FROM ubuntu:trusty
+MAINTAINER cian@cixce.com
+
+RUN apt-get update \
+ && apt-get install -y -q --no-install-recommends \
+    curl \
+    ca-certificates \
+    build-essential \
+    libkrb5-dev \
+    libssl-dev \
+    apache2 \
+    php5 \
+    php5-cli \
+    php5-mysqlnd \
+    php5-gd \
+    php5-imagick \
+    php5-curl \
+    imagemagick \
+    libapache2-mod-php5 \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /project \
+ && useradd -ms /bin/bash cixce \
+ && chown cixce.cixce /project \
+ && rm -rf /var/httpd/www \
+ && ln -s /var/httpd/www /project
+
+USER cixce
+WORKDIR /project
+
+EXPOSE 80
+CMD ["/bin/bash"]
