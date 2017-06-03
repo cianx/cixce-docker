@@ -20,15 +20,14 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /project \
- && groupadd -g 2879 cixce \
- && useradd -u 2879 -g 2879 -ms /bin/bash cixce \
- && chown cixce.cixce /project \
- && rm -rf /var/httpd/www \
- && ln -s /var/httpd/www /project
+RUN groupadd -g 6879 cixce \
+ && useradd -u 6879 -g 6879 -ms /bin/bash cixce \
+ && mkdir /app \
+ && chown cixce.cixce /app \
+ && rm -rf /var/www/html \
+ && ln -s /app /var/www/html
 
-USER cixce
-WORKDIR /project
+WORKDIR /app
 
 EXPOSE 80
-CMD ["/bin/bash"]
+CMD ["apachectl", "-D", "FOREGROUND"]

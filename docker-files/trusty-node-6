@@ -2,7 +2,7 @@ FROM ubuntu:trusty
 MAINTAINER cian@cixce.com
 
 RUN apt-get update \
-&& apt-get install -y -q --no-install-recommends \
+ && apt-get install -y -q --no-install-recommends \
     curl \
     ca-certificates \
     build-essential \
@@ -18,8 +18,8 @@ RUN apt-get update \
  && npm install -g prebuild-install
 
 RUN mkdir /project \
- && groupadd -g 2879 cixce \
- && useradd -u 2879 -g 2879 -ms /bin/bash cixce \
+ && groupadd -g 6879 cixce \
+ && useradd -u 6879 -g 6879 -ms /bin/bash cixce \
  && chown cixce.cixce /project
 
 USER cixce
