@@ -18,7 +18,8 @@ RUN apt-get update \
  && npm install -g prebuild-install
 
 RUN mkdir /project \
- && useradd -ms /bin/bash cixce \
+ && groupadd -g 2879 cixce \
+ && useradd -u 2879 -g 2879 -ms /bin/bash cixce \
  && chown cixce.cixce /project
 
 USER cixce

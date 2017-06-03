@@ -21,7 +21,8 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /project \
- && useradd -ms /bin/bash cixce \
+ && groupadd -g 2879 cixce \
+ && useradd -u 2879 -g 2879 -ms /bin/bash cixce \
  && chown cixce.cixce /project \
  && rm -rf /var/httpd/www \
  && ln -s /var/httpd/www /project
