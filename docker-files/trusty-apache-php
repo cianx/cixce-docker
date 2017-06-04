@@ -17,6 +17,8 @@ RUN apt-get update \
     php5-curl \
     imagemagick \
     libapache2-mod-php5 \
+ && apt-get -y build-dep imagemagick
+ && apt-get -y remove --purge *-dev
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
