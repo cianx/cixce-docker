@@ -15,15 +15,18 @@ RUN apt-get update \
     php5-gd \
     php5-imagick \
     php5-curl \
+    librsvg2-bin \
+    inkscape \
     imagemagick \
     libapache2-mod-php5 \
- && apt-get -y build-dep imagemagick
- && apt-get -y remove --purge *-dev
+ && apt-get -y build-dep imagemagick \
+ && apt-get -y remove --purge *-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g 6879 cixce \
  && useradd -u 6879 -g 6879 -ms /bin/bash cixce \
+ && useradd -g www-data cixce \
  && mkdir /app \
  && chown cixce.cixce /app \
  && rm -rf /var/www/html \
