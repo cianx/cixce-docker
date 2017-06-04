@@ -18,15 +18,17 @@ RUN apt-get update \
     librsvg2-bin \
     inkscape \
     imagemagick \
-    libapache2-mod-php5 \
- && apt-get -y build-dep imagemagick \
- && apt-get -y remove --purge *-dev \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+    libmagickcore5-extra \
+    libapache2-mod-php5
+
+# && apt-get -y build-dep imagemagick
+#&& apt-get -y remove --purge *-dev \
+# && apt-get clean \
+# && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g 6879 cixce \
  && useradd -u 6879 -g 6879 -ms /bin/bash cixce \
- && useradd -g www-data cixce \
+ && usermod -aG www-data cixce \
  && mkdir /app \
  && chown cixce.cixce /app \
  && rm -rf /var/www/html \
