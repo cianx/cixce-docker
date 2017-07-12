@@ -30,4 +30,4 @@ USER cixce
 WORKDIR /project
 
 EXPOSE 3000
-CMD ["/bin/bash"]
+CMD [“sleep”, “infinity”]

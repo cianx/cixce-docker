@@ -30,5 +30,4 @@ USER cixce
 WORKDIR /project
 
 EXPOSE 3000
-ENTRYPOINT [“sleep”, “infinity”]
-# CMD ["/bin/bash"]
+CMD [“sleep”, “infinity”]
