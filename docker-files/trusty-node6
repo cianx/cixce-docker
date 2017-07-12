@@ -18,7 +18,8 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && npm install -g prebuild-install \
- && npm cache clean
+ && npm cache clean \
+ && rm -rf /tmp/*
 
 RUN mkdir /project \
  && groupadd -g 6879 cixce \
