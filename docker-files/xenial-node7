@@ -10,8 +10,8 @@ RUN apt-get update \
     python \
     python3 \
     python3-pip \
- && curl -s -S -o /tmp/setup-node.sh https://deb.nodesource.com/setup_6.x \
- && chmod 755 /tmp/setup-node.sh \
+ && curl -s -S -o /tmp/setup-node.sh https://deb.nodesource.com/setup_7.x \
+ && chmod 755 /tmp/setup-node.sh
  && /tmp/setup-node.sh \
  && apt-get -y -q install nodejs \
  && rm /tmp/setup-node.sh \
