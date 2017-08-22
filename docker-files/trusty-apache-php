@@ -24,6 +24,7 @@ RUN apt-get update \
     libmagickcore5-extra \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
+ && a2enmod rewrite \
  && groupadd -g 6879 cixce \
  && useradd -u 6879 -g 6879 -ms /bin/bash cixce \
  && usermod -aG www-data cixce \
@@ -33,6 +34,8 @@ RUN apt-get update \
  && ln -s /app /var/www/html
 
 # && apt-get -y remove --purge *-dev \
+
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 
 WORKDIR /app
