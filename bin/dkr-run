@@ -1,10 +1,19 @@
 #!/bin/bash
 set -x
 
+case $1 in
+a|apache)
+  IMAGE="cixce/trusty-apache-php"
+  ;;
+*)
+  IMAGE=$1
+  ;;
+esac
+
 docker run -it --rm \
  --user "$(id -u):$(id -g)" \
  -v /etc/passwd:/etc/passwd:ro \
  -v /etc/group:/etc/group:ro \
  -v $(pwd):/project \
- $1 \
+ $IMAGE \
  ${@:2}

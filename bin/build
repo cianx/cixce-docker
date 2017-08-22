@@ -2,12 +2,17 @@
 set -e
 set -x
 
-docker build --pull  \
-    -t cixce/trusty-apache-php:latest \
-    -f docker-files/trusty-apache-php \
-    docker-files
-docker build --pull \
-    -f docker-files/trusty-node-6 \
-    -t cixce/trusty-node-6:latest \
-    docker-files
+case $1 in
+a|apache)
+  IMAGE="trusty-apache-php"
+  ;;
+*)
+  IMAGE=$1
+  ;;
+esac
 
+
+docker build --pull  \
+    -t cixce/$IMAGE:latest \
+    -f docker-files/$IMAGE \
+    docker-files
