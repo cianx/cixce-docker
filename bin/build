@@ -11,6 +11,7 @@ a|apache)
   ;;
 esac
 
+IMAGE=$1
 
 docker build --pull  \
     -t cixce/$IMAGE:latest \
